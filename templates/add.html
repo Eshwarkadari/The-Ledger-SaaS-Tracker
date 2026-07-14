@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block title %}Log entry — The Ledger{% endblock %}
+
+{% block content %}
+<section class="form-section">
+  <h1 class="form-heading">Log a subscription</h1>
+  <p class="form-sub">One entry per tool. You can always amend it later.</p>
+
+  <form method="POST" class="ledger-form">
+    <div class="field">
+      <label for="tool_name">Tool name</label>
+      <input type="text" id="tool_name" name="tool_name" placeholder="e.g. Notion, Figma, AWS" required>
+    </div>
+
+    <div class="field-row">
+      <div class="field">
+        <label for="monthly_cost">Amount (₹)</label>
+        <input type="number" step="0.01" id="monthly_cost" name="monthly_cost" placeholder="1499" required>
+      </div>
+      <div class="field">
+        <label for="billing_cycle">Billing cycle</label>
+        <select id="billing_cycle" name="billing_cycle">
+          <option value="monthly">Monthly</option>
+          <option value="yearly">Yearly</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="field">
+      <label for="renewal_date">Next renewal date</label>
+      <input type="date" id="renewal_date" name="renewal_date" required>
+    </div>
+
+    <div class="field">
+      <label for="owner">Owner <span class="optional">(optional)</span></label>
+      <input type="text" id="owner" name="owner" placeholder="Who signed up for this?">
+    </div>
+
+    <div class="field">
+      <label for="notes">Notes <span class="optional">(optional)</span></label>
+      <textarea id="notes" name="notes" rows="2" placeholder="Anything worth remembering — e.g. shared with the design team"></textarea>
+    </div>
+
+    <button type="submit" class="submit-btn">Add to ledger</button>
+  </form>
+</section>
+{% endblock %}
