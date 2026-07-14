@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: the-ledger
+    runtime: python
+    buildCommand: pip install -r requirements.txt && python -c "from app import init_db; init_db()"
+    startCommand: gunicorn app:app
+    plan: free
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.0
+      - key: SECRET_KEY
+        value: change-me-in-production
